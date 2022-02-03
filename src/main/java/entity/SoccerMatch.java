@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NonNull
-public class FootballMatch {
+public class SoccerMatch {
 
     private Team client;
     private int clientScore;
