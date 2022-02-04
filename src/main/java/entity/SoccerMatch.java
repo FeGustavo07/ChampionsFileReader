@@ -1,9 +1,6 @@
 package entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NonNull;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -11,13 +8,27 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NonNull
-public class SoccerMatch {
+@Getter
+public class SoccerMatch  implements Comparable<SoccerMatch>{
 
+    private LocalDate date;
     private String client;
     private int clientScore;
-    private String opponent;
     private int opponentScore;
-    private LocalDate date;
+    private String opponent;
+
+    @Override
+    public int compareTo(SoccerMatch soccerMatch) {
+        int dateCompare = date.compareTo(soccerMatch.getDate());
+        if (dateCompare != 0) {
+            return dateCompare;
+        }
+        int opponentCompare = opponent.compareTo(soccerMatch.getOpponent());
+        if (opponentCompare != 0){
+            return opponentCompare;
+        }
+        return client.compareTo(soccerMatch.getClient());
+    }
 
 
 }
