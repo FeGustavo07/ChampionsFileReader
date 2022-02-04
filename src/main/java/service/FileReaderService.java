@@ -2,6 +2,7 @@ package service;
 
 import com.fileManager.FileReader;
 import entity.SoccerMatch;
+import lombok.Getter;
 import lombok.SneakyThrows;
 import lombok.val;
 
@@ -11,12 +12,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class FileReaderService {
 
     private final FileReader fileReader = new FileReader();
 
     public List<SoccerMatch> read(String uri){
-         val fileResult = fileReader.handleFile(uri);
+        val fileResult = fileReader.handleFile(uri);
         List<SoccerMatch> listResult = new ArrayList<>();
         for (String[] line : fileResult) {
             SoccerMatch match = SoccerMatch.builder()
