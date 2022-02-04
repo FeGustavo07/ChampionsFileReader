@@ -3,12 +3,11 @@ package repository;
 import entity.SoccerMatch;
 import lombok.Getter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class SoccerMatchRepository {
     @Getter
-    private List<SoccerMatch> allRegisters = new ArrayList<>();
+    private final List<SoccerMatch> allRegisters = new ArrayList<>();
 
     public void addAll(List<SoccerMatch> matches){
         allRegisters.addAll(matches);
