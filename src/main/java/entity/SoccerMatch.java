@@ -13,9 +13,9 @@ import java.time.LocalDate;
 @NonNull
 public class SoccerMatch {
 
-    private Team client;
+    private String client;
     private int clientScore;
-    private Team opponent;
+    private String opponent;
     private int opponentScore;
     private LocalDate date;
 
