@@ -3,10 +3,8 @@ package service;
 import com.fileManager.FileReader;
 import entity.SoccerMatch;
 import lombok.Getter;
-import lombok.SneakyThrows;
 import lombok.val;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -22,10 +20,8 @@ public class FileReaderService {
         List<SoccerMatch> listResult = new ArrayList<>();
         for (String[] line : fileResult) {
             SoccerMatch match = SoccerMatch.builder()
-                    .client(line[0])
-                    .opponent(line[1])
-                    .clientScore(Integer.parseInt(line[2]))
-                    .opponentScore(Integer.parseInt(line[3]))
+                    .client(line[0],Integer.parseInt(line[2]))
+                    .opponent(line[1],Integer.parseInt(line[3]))
                     .date(LocalDate.parse(line[4], DateTimeFormatter.ofPattern("dd/MM/yyyy")))
                     .build();
             listResult.add(match);

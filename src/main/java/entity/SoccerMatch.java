@@ -8,26 +8,38 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NonNull
-public class SoccerMatch  implements Comparable<SoccerMatch>{
+@EqualsAndHashCode
+public class SoccerMatch  {//implements Comparable<SoccerMatch>{
 
-    private String client;
-    private int clientScore;
-    private String opponent;
-    private int opponentScore;
+    private Team client;
+    //private int clientScore;
+    private Team opponent;
+    //private int opponentScore;
     private LocalDate date;
 
-    @Override
-    public int compareTo(SoccerMatch soccerMatch) {
-        int dateCompare = date.compareTo(soccerMatch.getDate());
-        if (dateCompare != 0) {
-            return dateCompare;
+    public static class SoccerMatchBuilder{
+        public SoccerMatchBuilder client(String name, int goals){
+            this.client = Team.builder().name(name).goals(goals).build();
+            return this;
         }
-        int opponentCompare = opponent.compareTo(soccerMatch.getOpponent());
-        if (opponentCompare != 0){
-            return opponentCompare;
+        public SoccerMatchBuilder opponent(String name, int goals){
+            this.opponent = Team.builder().name(name).goals(goals).build();
+            return this;
         }
-        return client.compareTo(soccerMatch.getClient());
     }
+
+//    @Override
+//    public int compareTo(SoccerMatch soccerMatch) {
+//        int dateCompare = date.compareTo(soccerMatch.getDate());
+//        if (dateCompare != 0) {
+//            return dateCompare;
+//        }
+//        int opponentCompare = opponent.compareTo(soccerMatch.getOpponent());
+//        if (opponentCompare != 0){
+//            return opponentCompare;
+//        }
+//        return client.compareTo(soccerMatch.getClient());
+//    }
 
 
 }
