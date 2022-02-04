@@ -8,14 +8,13 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NonNull
-@Getter
 public class SoccerMatch  implements Comparable<SoccerMatch>{
 
-    private LocalDate date;
     private String client;
     private int clientScore;
-    private int opponentScore;
     private String opponent;
+    private int opponentScore;
+    private LocalDate date;
 
     @Override
     public int compareTo(SoccerMatch soccerMatch) {
