@@ -26,6 +26,20 @@
             <version>22.0.0</version>
             <scope>compile</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.fileManager</groupId>
+            <artifactId>fileManager</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>repsy</id>
+            <name>My Private Maven Repository on Repsy</name>
+            <url>https://repo.repsy.io/mvn/fernando_gustavo_silva/com_filemanager</url>
+        </repository>
+    </repositories>
 
 </project>
