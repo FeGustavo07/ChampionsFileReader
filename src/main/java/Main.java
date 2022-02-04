@@ -1,12 +1,12 @@
-import com.fileManager.FileWriter;
 import entity.SoccerMatch;
+import entity.TeamBoard;
+import lombok.val;
 import repository.SoccerMatchRepository;
+import repository.TeamBoardRepository;
 import service.FileReaderService;
+import service.FileWriterService;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
 
@@ -15,23 +15,39 @@ public class Main {
 
     public static void main(String[] args) {
         FileReaderService fileReaderService = new FileReaderService();
-        SoccerMatchRepository repository = new SoccerMatchRepository();
+        FileWriterService fileWriterService = new FileWriterService();
+        SoccerMatchRepository matchRepository = new SoccerMatchRepository();
+        TeamBoardRepository teamBoardRepository = new TeamBoardRepository();
+
 
         List<SoccerMatch> matches = fileReaderService.read("src/main/resources/brasileirao2020.csv");
-        repository.addAll(matches);
+        matchRepository.addAll(matches);
 
 
         // Ordenação da lista
-        repository.getAllRegisters().sort(
+        matchRepository.getAllRegisters().sort(
                 Comparator.comparing(SoccerMatch::getDate)
-                        .thenComparing(SoccerMatch::getOpponent)
+                        .thenComparing((SoccerMatch soccerMatch) -> soccerMatch.getOpponent().getName())
         );
 
         // Separação por times
-        ArrayList<SoccerMatch> table = new ArrayList<>(repository.getAllRegisters());
+        ArrayList<SoccerMatch> table = new ArrayList<>(matchRepository.getAllRegisters());
 
-        Map<String, List<SoccerMatch>> tableByClient = table.stream().collect(groupingBy(SoccerMatch::getClient));
+        TreeMap<String, List<SoccerMatch>> tableByClient = new TreeMap<>(
+                table.stream().collect(groupingBy(match -> match.getClient().getName())));
 
+
+        for(String teamName : tableByClient.keySet()){
+            val board = new TeamBoard(teamName);
+            tableByClient.get(teamName).forEach(board::add);
+            teamBoardRepository.add(board);
+        }
+
+
+
+        tableByClient.forEach((key, value) -> System.out.println(key + " " + value));
+
+        System.out.println(tableByClient);
 //        tPorClient.forEach((team, history) -> {
 //            System.out.println();
 //            System.out.println("Team: " + team);
@@ -48,6 +64,16 @@ public class Main {
 
 //        System.out.println(repository.getAllRegisters());
 //        System.out.println(LocalDate.parse("1995-10-12"));
+
+        for(TeamBoard board : teamBoardRepository.getAllBoards()) {
+            fileWriterService.writeBoard(board);
+            System.out.println(board.GetformatedTextResult());
+
+        }
+
+        //System.out.println(teamBoardRepository.getOrderedByPontuation());
+
+
 
     }
 }
