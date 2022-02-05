@@ -82,6 +82,7 @@ public class FileManagerController {
     private void deleteFilesOption() {
         Scanner input = new Scanner(System.in);
         System.out.println("digite 1 para apagar os arquivos ou 2 para finalizar");
+        System.out.print("#: ");
         int option = input.nextInt();
 
         if (option == 1) {

@@ -13,7 +13,7 @@ public class FileWriterService {
     public void writeTeamsFile(TeamBoard board, String baseUri) {
         String fileType = ".txt";
         ArrayList<String> toWrite = new ArrayList<>();
-        String path = String.format("%s%s%s", baseUri, board.getName(), fileType);
+        String fileName = String.format("%s%s%s", baseUri, board.getName(), fileType);
 
         for (SoccerMatch match : board.getMatches()) {
             String message = String.format("%s;%s;%d;%d;%s",
@@ -25,12 +25,12 @@ public class FileWriterService {
             );
             toWrite.add(message);
         }
-        writer.writeSeparateTeams(toWrite, path);
+        writer.writeSeparateTeams(toWrite, fileName, baseUri);
     }
 
     public void writeBoard(TeamBoard board, String path) {
         String uri = path + "classification.txt";
-        writer.writeChampionshipStandings(board.getformatedTextResult(), uri);
+        writer.writeChampionshipStandings(board.getformatedTextResult(), uri, path);
     }
 
 }
