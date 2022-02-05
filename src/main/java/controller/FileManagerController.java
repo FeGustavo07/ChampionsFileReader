@@ -2,6 +2,7 @@ package controller;
 
 import entity.SoccerMatch;
 import entity.TeamBoard;
+import exception.NotParsableLine;
 import lombok.val;
 import repository.SoccerMatchRepository;
 import repository.TeamBoardRepository;
@@ -16,7 +17,7 @@ import static java.util.stream.Collectors.groupingBy;
 
 public class FileManagerController {
 
-    private final String URI_SOURCE_FILE = "src/main/resources/brasileirao2020.csv";
+    private final String URI_SOURCE_FILE = "src/main/resources/santander811matchesResult.csv";
     private final String URI_PATH_SAVE_TEAMS_FILE = "src/main/resources/resultsByTeams/";
     private final String URI_PATH_SAVE_CLASSIFICATION_FILE = "src/main/resources/championshipStandings/";
 
@@ -25,7 +26,7 @@ public class FileManagerController {
     private final SoccerMatchRepository matchRepository = new SoccerMatchRepository();
     private final TeamBoardRepository teamBoardRepository = new TeamBoardRepository();
 
-    public void run() {
+    public void run() throws NotParsableLine {
         this.read(this.URI_SOURCE_FILE);
         this.fillsTeamTable();
         this.WriteEachTeamsFile();
@@ -34,7 +35,7 @@ public class FileManagerController {
     }
 
 
-    public void read(String path) {
+    public void read(String path) throws NotParsableLine {
         HashSet<SoccerMatch> matches = fileReaderService.read(path);
         this.matchRepository.addAll(matches);
     }
