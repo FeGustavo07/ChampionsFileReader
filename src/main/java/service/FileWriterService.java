@@ -3,7 +3,6 @@ package service;
 import com.fileManager.FileWriter;
 import entity.SoccerMatch;
 import entity.TeamBoard;
-import exception.NotParsableLine;
 
 import java.util.ArrayList;
 

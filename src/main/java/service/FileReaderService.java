@@ -5,15 +5,9 @@ import entity.SoccerMatch;
 import exception.NotParsableLine;
 import lombok.Getter;
 import lombok.val;
-
-import java.time.DateTimeException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 @Getter
 public class FileReaderService {

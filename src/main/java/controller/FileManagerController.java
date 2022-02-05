@@ -2,7 +2,6 @@ package controller;
 
 import entity.SoccerMatch;
 import entity.TeamBoard;
-import exception.NotParsableLine;
 import lombok.val;
 import repository.SoccerMatchRepository;
 import repository.TeamBoardRepository;
