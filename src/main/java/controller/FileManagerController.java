@@ -26,7 +26,7 @@ public class FileManagerController {
     private final SoccerMatchRepository matchRepository = new SoccerMatchRepository();
     private final TeamBoardRepository teamBoardRepository = new TeamBoardRepository();
 
-    public void run() throws NotParsableLine {
+    public void run() {
         this.read(this.URI_SOURCE_FILE);
         this.fillsTeamTable();
         this.WriteEachTeamsFile();
@@ -35,7 +35,7 @@ public class FileManagerController {
     }
 
 
-    public void read(String path) throws NotParsableLine {
+    public void read(String path) {
         HashSet<SoccerMatch> matches = fileReaderService.read(path);
         this.matchRepository.addAll(matches);
     }

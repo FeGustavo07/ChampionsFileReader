@@ -20,7 +20,7 @@ public class FileReaderService {
 
     private final FileReader fileReader = new FileReader();
 
-    public HashSet<SoccerMatch> read(String uri) throws NotParsableLine {
+    public HashSet<SoccerMatch> read(String uri) {
         val fileResult = fileReader.handleFile(uri);
         HashSet<SoccerMatch> listResult = new HashSet<>();
 
@@ -40,11 +40,12 @@ public class FileReaderService {
                 SoccerMatch match = SoccerMatch.builder()
                         .client(line[0], Integer.parseInt(line[2]))
                         .opponent(line[1], Integer.parseInt(line[3]))
-                        .date(LocalDate.parse(line[4], DateTimeFormatter.ofPattern("dd/MM/yyyy")))
+                        .date(LocalDate.parse(line[4]))//, DateTimeFormatter.ofPattern("dd/MM/yyyy")))
                         .build();
                 listResult.add(match);
-            } catch (Exception e) {
-                throw new NotParsableLine("line");
+            } catch (NumberFormatException e) {
+                NotParsableLine error = new NotParsableLine("Line not Parsable");
+                error.printStackTrace();
             }
 
         }
