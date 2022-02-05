@@ -1,3 +1,4 @@
+import com.fileManager.FileWriter;
 import entity.SoccerMatch;
 import entity.TeamBoard;
 import lombok.val;
@@ -45,9 +46,9 @@ public class Main {
 
 
 
-        tableByClient.forEach((key, value) -> System.out.println(key + " " + value));
+//        tableByClient.forEach((key, value) -> System.out.println(key + " " + value));
 
-        System.out.println(tableByClient);
+//        System.out.println(tableByClient);
 //        tPorClient.forEach((team, history) -> {
 //            System.out.println();
 //            System.out.println("Team: " + team);
@@ -58,18 +59,27 @@ public class Main {
 //        });
 
         // Criando lista do time
-        List<SoccerMatch> corinthians = tableByClient.get("Corinthians");
-
-        System.out.println(corinthians);
+//        List<SoccerMatch> corinthians = tableByClient.get("Corinthians");
+//
+//        System.out.println(corinthians);
 
 //        System.out.println(repository.getAllRegisters());
 //        System.out.println(LocalDate.parse("1995-10-12"));
 
-        for(TeamBoard board : teamBoardRepository.getAllBoards()) {
-            fileWriterService.writeBoard(board);
-            System.out.println(board.GetformatedTextResult());
+//        for(TeamBoard board : teamBoardRepository.getAllBoards()) {
+//            fileWriterService.writeBoard(board);
+//            System.out.println(board.GetformatedTextResult());
+//
+//        }
+//
 
-        }
+//        fileWriterService.writeArqDoTime(teamBoardRepository.getAllBoards(), "teste");
+
+
+
+        teamBoardRepository.getAllBoards().forEach(fileWriterService::writeBoard);
+
+
 
         //System.out.println(teamBoardRepository.getOrderedByPontuation());
 

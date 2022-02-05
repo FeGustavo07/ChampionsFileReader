@@ -1,18 +1,38 @@
 package service;
 
 import com.fileManager.FileWriter;
+import entity.SoccerMatch;
 import entity.TeamBoard;
+import repository.TeamBoardRepository;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class FileWriterService {
 
-    private FileWriter writer = new FileWriter();
+    private final FileWriter writer = new FileWriter();
 
     public void writeBoard(TeamBoard board){
 
+        ArrayList<String> toWrite = new ArrayList<>();
+
+        String path = "src/main/resources/results/byTeams/" + board.getName() + ".txt";
+
+        for (SoccerMatch match : board.getMatches()) {
+            String message = String.format("%s;%s;%d;%d;%s",
+                match.getClient().getName(),
+                match.getOpponent().getName(),
+                match.getClient().getGoals(),
+                match.getOpponent().getGoals(),
+                match.getDate().toString()
+            );
+            toWrite.add(message);
+        }
+        writer.writeSeparateTeams(toWrite, path);
     }
+
+
 }
