@@ -66,18 +66,16 @@ public class Main {
 //        System.out.println(repository.getAllRegisters());
 //        System.out.println(LocalDate.parse("1995-10-12"));
 
+
+        //aqui já cria o arquivo da classificação final do campeonato
 //        for(TeamBoard board : teamBoardRepository.getAllBoards()) {
 //            fileWriterService.writeBoard(board);
 //            System.out.println(board.GetformatedTextResult());
 //
 //        }
-//
 
-//        fileWriterService.writeArqDoTime(teamBoardRepository.getAllBoards(), "teste");
-
-
-
-        teamBoardRepository.getAllBoards().forEach(fileWriterService::writeBoard);
+        // aqui cria um arquivo pra cada time
+//        teamBoardRepository.getAllBoards().forEach(fileWriterService::writeTeamsFile);
 
 
 
