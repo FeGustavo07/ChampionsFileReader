@@ -9,22 +9,11 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NonNull
 @EqualsAndHashCode
-public class SoccerMatch  implements Comparable<SoccerMatch>{
+public class SoccerMatch implements Comparable<SoccerMatch> {
 
     private Team client;
     private Team opponent;
     private LocalDate date;
-
-    public static class SoccerMatchBuilder{
-        public SoccerMatchBuilder client(String name, int goals){
-            this.client = Team.builder().name(name).goals(goals).build();
-            return this;
-        }
-        public SoccerMatchBuilder opponent(String name, int goals){
-            this.opponent = Team.builder().name(name).goals(goals).build();
-            return this;
-        }
-    }
 
     @Override
     public int compareTo(SoccerMatch soccerMatch) {
@@ -33,10 +22,22 @@ public class SoccerMatch  implements Comparable<SoccerMatch>{
             return dateCompare;
         }
         int opponentCompare = opponent.getName().compareTo(soccerMatch.getOpponent().getName());
-        if (opponentCompare != 0){
+        if (opponentCompare != 0) {
             return opponentCompare;
         }
         return client.getName().compareTo(soccerMatch.getClient().getName());
+    }
+
+    public static class SoccerMatchBuilder {
+        public SoccerMatchBuilder client(String name, int goals) {
+            this.client = Team.builder().name(name).goals(goals).build();
+            return this;
+        }
+
+        public SoccerMatchBuilder opponent(String name, int goals) {
+            this.opponent = Team.builder().name(name).goals(goals).build();
+            return this;
+        }
     }
 
 

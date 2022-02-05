@@ -8,7 +8,7 @@ import java.util.HashSet;
 
 @Data
 @EqualsAndHashCode
-public class TeamBoard implements Comparable<TeamBoard>{
+public class TeamBoard implements Comparable<TeamBoard> {
     private String name;
     private int victories;
     private int ties;
@@ -26,7 +26,7 @@ public class TeamBoard implements Comparable<TeamBoard>{
     }
 
     public String getformatedTextResult() {
-        return String.format("%s;%d;%d;%d;%d;\n",
+        return String.format("%s;%d;%d;%d;%d;",
                 this.name, this.victories, this.ties, this.defeats, this.pontuation
         );
     }
