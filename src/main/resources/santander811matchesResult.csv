@@ -20,6 +20,7 @@ América-MG;Juventude;5;1;2022-03-05
 América-MG;Palmeiras;4;4;2022-03-13
 América-MG;Santos;2;5;2022-03-13
 América-MG;São Paulo;1;5;2022-03-09
+time_1(mandante);time2(visitante);placar_time_1;placar_time_2;data
 Athletico Paranaense;Atlético-GO;5;0;2022-03-17
 Athletico Paranaense;Atlético-MG;6;6;2022-03-26
 Athletico Paranaense;Avaí;2;6;2022-03-03

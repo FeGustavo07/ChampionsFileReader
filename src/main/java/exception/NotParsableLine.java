@@ -1,13 +1,16 @@
 package exception;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
 public class NotParsableLine extends Exception{
     private String message;
+
+    public void getErrorMessage() {
+        System.out.println("dropped row cannot be converted");
+        System.out.println();
+    }
+
 }

@@ -45,7 +45,7 @@ public class FileReaderService {
                 listResult.add(match);
             } catch (NumberFormatException e) {
                 NotParsableLine error = new NotParsableLine("Line not Parsable");
-                error.printStackTrace();
+                error.getErrorMessage();
             }
 
         }
