@@ -2,6 +2,7 @@ package controller;
 
 import entity.SoccerMatch;
 import entity.TeamBoard;
+import exception.NotParsableLine;
 import lombok.val;
 import repository.SoccerMatchRepository;
 import repository.TeamBoardRepository;
@@ -16,7 +17,7 @@ import static java.util.stream.Collectors.groupingBy;
 
 public class FileManagerController {
 
-    private final String URI_SOURCE_FILE = "src/main/resources/brasileirao2020.csv";
+    private final String URI_SOURCE_FILE = "src/main/resources/santander811matchesResult.csv";
     private final String URI_PATH_SAVE_TEAMS_FILE = "src/main/resources/resultsByTeams/";
     private final String URI_PATH_SAVE_CLASSIFICATION_FILE = "src/main/resources/championshipStandings/";
 
@@ -82,6 +83,7 @@ public class FileManagerController {
     private void deleteFilesOption() {
         Scanner input = new Scanner(System.in);
         System.out.println("digite 1 para apagar os arquivos ou 2 para finalizar");
+        System.out.print("#: ");
         int option = input.nextInt();
 
         if (option == 1) {

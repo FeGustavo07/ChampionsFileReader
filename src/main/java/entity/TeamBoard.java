@@ -2,6 +2,7 @@ package entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashSet;
@@ -48,4 +49,5 @@ public class TeamBoard implements Comparable<TeamBoard> {
     public int compareTo(@NotNull TeamBoard o) {
         return this.pontuation - o.getPontuation();
     }
+
 }
