@@ -13,7 +13,7 @@ import static java.util.Comparator.reverseOrder;
 public class TeamBoardRepository {
 
     @Getter
-    private final List<TeamBoard> allBoards = new ArrayList<>();
+    private final TreeSet<TeamBoard> allBoards = new TreeSet<>();
 
     public void add(TeamBoard board){
         this.allBoards.add(board);

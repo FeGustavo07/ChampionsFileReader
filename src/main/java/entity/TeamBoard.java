@@ -2,12 +2,13 @@ package entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashSet;
 
 @Data
 @EqualsAndHashCode
-public class TeamBoard {
+public class TeamBoard implements Comparable<TeamBoard>{
     private String name;
     private int victories;
     private int ties;
@@ -24,7 +25,7 @@ public class TeamBoard {
         this.matches.add(match);
     }
 
-    public String GetformatedTextResult() {
+    public String getformatedTextResult() {
         return String.format("%s;%d;%d;%d;%d;\n",
                 this.name, this.victories, this.ties, this.defeats, this.pontuation
         );
@@ -42,4 +43,9 @@ public class TeamBoard {
         }
     }
 
+
+    @Override
+    public int compareTo(@NotNull TeamBoard o) {
+        return this.pontuation - o.getPontuation();
+    }
 }

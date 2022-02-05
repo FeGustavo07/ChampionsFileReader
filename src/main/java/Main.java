@@ -15,36 +15,34 @@ public class Main {
 
 
     public static void main(String[] args) {
-        FileReaderService fileReaderService = new FileReaderService();
-        FileWriterService fileWriterService = new FileWriterService();
-        SoccerMatchRepository matchRepository = new SoccerMatchRepository();
-        TeamBoardRepository teamBoardRepository = new TeamBoardRepository();
+ //       FileReaderService fileReaderService = new FileReaderService();
+  //      FileWriterService fileWriterService = new FileWriterService();
+  //      SoccerMatchRepository matchRepository = new SoccerMatchRepository();
+  //      TeamBoardRepository teamBoardRepository = new TeamBoardRepository();
 
-
-        List<SoccerMatch> matches = fileReaderService.read("src/main/resources/brasileirao2020.csv");
-        matchRepository.addAll(matches);
+//
+ //       List<SoccerMatch> matches = fileReaderService.read("src/main/resources/brasileirao2020.csv");
+ //       matchRepository.addAll(matches);
 
 
         // Ordenação da lista
-        matchRepository.getAllRegisters().sort(
-                Comparator.comparing(SoccerMatch::getDate)
-                        .thenComparing((SoccerMatch soccerMatch) -> soccerMatch.getOpponent().getName())
-        );
+   //     matchRepository.getAllRegisters().sort(
+       //         Comparator.comparing(SoccerMatch::getDate)
+         //               .thenComparing((SoccerMatch soccerMatch) -> soccerMatch.getOpponent().getName())
+     //   );
 
         // Separação por times
-        ArrayList<SoccerMatch> table = new ArrayList<>(matchRepository.getAllRegisters());
+  //      ArrayList<SoccerMatch> table = new ArrayList<>(matchRepository.getAllRegisters());
 
-        TreeMap<String, List<SoccerMatch>> tableByClient = new TreeMap<>(
-                table.stream().collect(groupingBy(match -> match.getClient().getName())));
-
-
-        for(String teamName : tableByClient.keySet()){
-            val board = new TeamBoard(teamName);
-            tableByClient.get(teamName).forEach(board::add);
-            teamBoardRepository.add(board);
-        }
+   //     TreeMap<String, List<SoccerMatch>> tableByClient = new TreeMap<>(
+     //           table.stream().collect(groupingBy(match -> match.getClient().getName())));
 
 
+    //    for(String teamName : tableByClient.keySet()){
+     //       val board = new TeamBoard(teamName);
+     //       tableByClient.get(teamName).forEach(board::add);
+     //       teamBoardRepository.add(board);
+     //   }
 
 //        tableByClient.forEach((key, value) -> System.out.println(key + " " + value));
 

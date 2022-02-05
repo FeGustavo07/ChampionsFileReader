@@ -33,10 +33,11 @@ public class FileWriterService {
         }
         writer.writeSeparateTeams(toWrite, path);
     }
-
+  
     public void writeBoard(TeamBoard board) {
         String path = "src/main/resources/championshipStandings/table.txt";
         writer.writeChampionshipStandings(board.GetformatedTextResult(), path);
     }
+
 }
 
