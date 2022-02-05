@@ -10,9 +10,13 @@ import java.util.stream.Stream;
 
 public class FileWriterService {
 
-    private FileWriter writer = new FileWriter();
+    private final FileWriter writer = new FileWriter();
 
     public void writeBoard(TeamBoard board){
 
+
+
     }
+
+
 }

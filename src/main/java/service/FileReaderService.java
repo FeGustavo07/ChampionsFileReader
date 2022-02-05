@@ -8,6 +8,7 @@ import lombok.val;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Getter
@@ -15,9 +16,9 @@ public class FileReaderService {
 
     private final FileReader fileReader = new FileReader();
 
-    public List<SoccerMatch> read(String uri){
+    public HashSet<SoccerMatch> read(String uri){
         val fileResult = fileReader.handleFile(uri);
-        List<SoccerMatch> listResult = new ArrayList<>();
+        HashSet<SoccerMatch> listResult = new HashSet<>();
         for (String[] line : fileResult) {
             SoccerMatch match = SoccerMatch.builder()
                     .client(line[0],Integer.parseInt(line[2]))
