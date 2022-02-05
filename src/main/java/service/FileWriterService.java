@@ -3,23 +3,17 @@ package service;
 import com.fileManager.FileWriter;
 import entity.SoccerMatch;
 import entity.TeamBoard;
-import repository.TeamBoardRepository;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Stream;
 
 public class FileWriterService {
 
     private final FileWriter writer = new FileWriter();
 
-    public void writeTeamsFile(TeamBoard board){
-
+    public void writeTeamsFile(TeamBoard board, String baseUri) {
+        String fileType = ".txt";
         ArrayList<String> toWrite = new ArrayList<>();
-
-        String path = "src/main/resources/resultsByTeams/" + board.getName() + ".txt";
+        String path = String.format("%s%s%s", baseUri, board.getName(), fileType);
 
         for (SoccerMatch match : board.getMatches()) {
             String message = String.format("%s;%s;%d;%d;%s",
@@ -33,10 +27,10 @@ public class FileWriterService {
         }
         writer.writeSeparateTeams(toWrite, path);
     }
-  
-    public void writeBoard(TeamBoard board) {
-        String path = "src/main/resources/championshipStandings/table.txt";
-        writer.writeChampionshipStandings(board.GetformatedTextResult(), path);
+
+    public void writeBoard(TeamBoard board, String path) {
+        String uri = path + "classification.txt";
+        writer.writeChampionshipStandings(board.getformatedTextResult(), uri);
     }
 
 }
