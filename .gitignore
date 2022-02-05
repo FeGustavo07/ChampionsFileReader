@@ -30,3 +30,5 @@
 hs_err_pid*
 
 /.idea/
+/src/main/resources/championshipStandings/
+/src/main/resources/resultsByTeams/
