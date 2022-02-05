@@ -24,17 +24,6 @@ public class FileReaderService {
         val fileResult = fileReader.handleFile(uri);
         HashSet<SoccerMatch> listResult = new HashSet<>();
 
-        //teste
-//        for (String[] line : fileResult) {
-//            try {
-//                Integer.parseInt(line[2]);
-//                Integer.parseInt(line[3]);
-//                LocalDate.parse(line[4]);
-//            } catch ()
-//
-//        }
-
-
         for (String[] line : fileResult) {
             try {
                 SoccerMatch match = SoccerMatch.builder()
