@@ -6,6 +6,7 @@ import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 @Data
 @EqualsAndHashCode
@@ -15,7 +16,7 @@ public class TeamBoard implements Comparable<TeamBoard> {
     private int ties;
     private int defeats;
     private int pontuation = 0;
-    private HashSet<SoccerMatch> matches = new HashSet<>();
+    private LinkedHashSet<SoccerMatch> matches = new LinkedHashSet<>();
 
     public TeamBoard(String name) {
         this.name = name;
