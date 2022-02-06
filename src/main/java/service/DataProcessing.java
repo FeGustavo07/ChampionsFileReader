@@ -43,8 +43,8 @@ public class DataProcessing {
     }
 
     public void WriteEachTeamsFile() {
-        teamBoardRepository.getAllBoards().forEach(
-                value -> fileWriterService.writeTeamsFile(value, URI_PATH_SAVE_TEAMS_FILE)
+      teamBoardRepository.getAllBoards().forEach(
+               value -> fileWriterService.writeTeamsFile(value, URI_PATH_SAVE_TEAMS_FILE)
         );
     }
 
@@ -64,7 +64,7 @@ public class DataProcessing {
         return new TreeSet<>(toOrder);
     }
 
-    private TreeSet<TeamBoard> orderByHighestPontuation(TreeSet<TeamBoard> toOrder) {
+    private TreeSet<TeamBoard> orderByHighestPontuation(HashSet<TeamBoard> toOrder) {
         TreeSet<TeamBoard> list = new TreeSet<>(Collections.reverseOrder());
         list.addAll(toOrder);
         return list;

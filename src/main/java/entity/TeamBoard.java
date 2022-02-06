@@ -42,7 +42,6 @@ public class TeamBoard implements Comparable<TeamBoard> {
         }
     }
 
-
     @Override
     public int compareTo(@NotNull TeamBoard o) {
         return this.pontuation - o.getPontuation();
