@@ -10,5 +10,5 @@ import lombok.*;
 @Getter
 public class Team {
     private String name;
-    private int goals;
+    private Integer goals;
 }

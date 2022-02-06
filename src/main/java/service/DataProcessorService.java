@@ -1,8 +1,9 @@
 package service;
 
+
 import entity.SoccerMatch;
 import entity.TeamBoard;
-import lombok.Getter;
+import enums.SoccerPontuationRules;
 import lombok.val;
 import repository.SoccerMatchRepository;
 import repository.TeamBoardRepository;
@@ -25,7 +26,10 @@ public class DataProcessorService {
         HashSet<SoccerMatch> matches = fileReaderService.read(path);
         this.matchRepository.addAll(matches);
         this.fillsTeamTable();
+        setResults();
     }
+
+
 
     public void WriteEachTeamsFile(String uri) {
         teamBoardRepository.getAllBoards().forEach(
@@ -48,8 +52,37 @@ public class DataProcessorService {
                 board.add(soccerMatch);
             }
             this.teamBoardRepository.add(board);
-            val teamBoards = this.teamBoardRepository.getAllBoards();
         }
+    }
+
+    private void setResults() {
+        HashSet<SoccerMatch> allMatches = this.matchRepository.getAllRegisters();
+        TreeSet<TeamBoard> allBoards = teamBoardRepository.getAllBoards();
+        allMatches.forEach(
+                match -> {
+                    Integer clientScore = match.getClient().getGoals();
+                    Integer opponentScore = match.getOpponent().getGoals();
+                    TeamBoard clientBoard = new TeamBoard();
+                    TeamBoard opponentBoard = new TeamBoard();
+
+                    for (TeamBoard board : allBoards) {
+                        if (Objects.equals(board.getName(), match.getClient().getName())){
+                            clientBoard = board;
+                        }
+                        if(Objects.equals(board.getName(), match.getOpponent().getName())){
+                            opponentBoard = board;
+                        }
+                    }
+                    int clientResult = clientScore.compareTo(opponentScore);
+                    int opponentResult = opponentScore.compareTo(clientScore);
+
+                    SoccerPontuationRules.getEnumTypeBy(clientResult)
+                            .setResult(clientBoard);
+
+                    SoccerPontuationRules.getEnumTypeBy(opponentResult)
+                            .setResult(opponentBoard);
+                }
+        );
     }
 
     private TreeMap<String, List<SoccerMatch>> groupByClient(TreeSet<SoccerMatch> ordered) {
@@ -67,7 +100,6 @@ public class DataProcessorService {
         list.addAll(toOrder);
         return list;
     }
-
 
 
 }
