@@ -27,6 +27,7 @@ public class FileReaderService {
                         .date(LocalDate.parse(line[4]))//, DateTimeFormatter.ofPattern("dd/MM/yyyy")))
                         .build();
                 listResult.add(match);
+
             } catch (NumberFormatException e) {
                 NotParsableLine error = new NotParsableLine("Line not Parsable");
                 error.getErrorMessage();

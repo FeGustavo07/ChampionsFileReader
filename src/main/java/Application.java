@@ -1,10 +1,9 @@
-import controller.FileManagerController;
-import exception.NotParsableLine;
+import controller.ConsoleApplicationController;
 
 public class Application {
 
 
     public static void main(String[] args)  {
-            new FileManagerController().run();
+            new ConsoleApplicationController().chooseOptions();
     }
 }
