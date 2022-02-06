@@ -1,0 +1,19 @@
+Fortaleza;Avaí;3;2;2022-03-02
+Fortaleza;Cuiabá;3;0;2022-03-03
+Fortaleza;São Paulo;6;0;2022-03-03
+Fortaleza;Internacional;5;0;2022-03-04
+Fortaleza;Fluminense;2;4;2022-03-05
+Fortaleza;Athletico Paranaense;3;0;2022-03-06
+Fortaleza;Atlético-GO;1;5;2022-03-06
+Fortaleza;Botafogo;4;6;2022-03-06
+Fortaleza;Corinthians;1;0;2022-03-11
+Fortaleza;Flamengo;6;6;2022-03-13
+Fortaleza;América-MG;5;3;2022-03-16
+Fortaleza;Goiás;2;3;2022-03-18
+Fortaleza;Coritiba;0;0;2022-03-19
+Fortaleza;Palmeiras;4;2;2022-03-19
+Fortaleza;Ceará;0;4;2022-03-22
+Fortaleza;Atlético-MG;6;0;2022-03-23
+Fortaleza;Bragantino;1;3;2022-03-23
+Fortaleza;Juventude;4;6;2022-03-24
+Fortaleza;Santos;2;5;2022-03-26

@@ -1,0 +1,19 @@
+Corinthians;Avaí;1;6;2022-03-02
+Corinthians;Ceará;3;0;2022-03-04
+Corinthians;Athletico Paranaense;4;3;2022-03-05
+Corinthians;Coritiba;4;2;2022-03-11
+Corinthians;São Paulo;2;5;2022-03-11
+Corinthians;Atlético-GO;4;4;2022-03-12
+Corinthians;Juventude;2;5;2022-03-12
+Corinthians;Cuiabá;5;0;2022-03-13
+Corinthians;Goiás;2;0;2022-03-15
+Corinthians;Bragantino;1;2;2022-03-19
+Corinthians;Internacional;1;1;2022-03-20
+Corinthians;Botafogo;5;4;2022-03-22
+Corinthians;Fluminense;3;2;2022-03-22
+Corinthians;Atlético-MG;4;4;2022-03-25
+Corinthians;Fortaleza;5;3;2022-03-26
+Corinthians;Palmeiras;2;3;2022-03-27
+Corinthians;Santos;4;0;2022-03-28
+Corinthians;América-MG;0;1;2022-03-29
+Corinthians;Flamengo;5;3;2022-03-31
