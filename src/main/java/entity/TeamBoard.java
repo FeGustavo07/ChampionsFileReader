@@ -2,11 +2,13 @@ package entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import java.util.LinkedHashSet;
 
 @Data
 @EqualsAndHashCode
+@NoArgsConstructor
 public class TeamBoard implements Comparable<TeamBoard>{
     private String name;
     private int victories;
@@ -20,7 +22,6 @@ public class TeamBoard implements Comparable<TeamBoard>{
     }
 
     public void add(SoccerMatch match) {
-        this.setResults(match);
         this.matches.add(match);
     }
 
@@ -30,17 +31,6 @@ public class TeamBoard implements Comparable<TeamBoard>{
         );
     }
 
-    private void setResults(SoccerMatch match) {
-        if (match.getClient().getGoals() > match.getOpponent().getGoals()) {
-            this.pontuation += 3;
-            this.victories += 1;
-        } else if (match.getClient().getGoals() == match.getOpponent().getGoals()) {
-            this.pontuation += 1;
-            this.ties += 1;
-        } else {
-            this.defeats += 1;
-        }
-    }
 
     @Override
     public int compareTo(@NotNull TeamBoard teamBoard) {
