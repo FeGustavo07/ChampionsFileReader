@@ -2,11 +2,15 @@ package entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 import java.util.LinkedHashSet;
 
 @Data
 @EqualsAndHashCode
+@Getter
+@Setter
 public class TeamBoard implements Comparable<TeamBoard>{
     private String name;
     private int victories;
@@ -20,17 +24,17 @@ public class TeamBoard implements Comparable<TeamBoard>{
     }
 
     public void add(SoccerMatch match) {
-        this.setResults(match);
+        this.setResultsClient(match);
         this.matches.add(match);
     }
 
     public String getformatedTextResult() {
         return String.format("%s;%d;%d;%d;%d;",
-                this.name, this.victories, this.ties, this.defeats, this.pontuation
+               this.name, this.victories, this.ties, this.defeats, this.pontuation
         );
     }
 
-    private void setResults(SoccerMatch match) {
+    private void setResultsClient(SoccerMatch match) {
         if (match.getClient().getGoals() > match.getOpponent().getGoals()) {
             this.pontuation += 3;
             this.victories += 1;

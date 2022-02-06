@@ -4,6 +4,8 @@ import lombok.Getter;
 import service.DataProcessorService;
 
 import java.io.File;
+import java.nio.file.NoSuchFileException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 
@@ -17,15 +19,12 @@ public class FileManagerController {
 
 
     public String getFilePath() {
+        String path;
         Scanner input = new Scanner(System.in);
-        try {
-            System.out.println();
-            System.out.print("Digite o caminho do arquivo: ");
-            return input.nextLine();
-        } finally {
-            input.close();
-        }
-
+        System.out.println();
+        System.out.print("Digite o caminho do arquivo: ");
+        path = input.nextLine();
+        return path;
     }
 
     public void readFile(String path) {
