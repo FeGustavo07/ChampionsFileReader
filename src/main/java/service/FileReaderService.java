@@ -1,6 +1,7 @@
 package service;
 
 import com.fileManager.FileReader;
+import dto.SoccerMatchDTO;
 import entity.SoccerMatch;
 import exception.NotParsableLine;
 import lombok.Getter;
@@ -16,15 +17,16 @@ public class FileReaderService {
     private final FileReader fileReader = new FileReader();
 
     public HashSet<SoccerMatch> read(String uri) {
-        val fileResult = fileReader.handleFile(uri);
+        SoccerMatchDTO template = new SoccerMatchDTO();
+        val fileResult = fileReader.readFileWithTemplate(template,uri);
         HashSet<SoccerMatch> listResult = new HashSet<>();
 
-        for (String[] line : fileResult) {
+        for (SoccerMatchDTO dto : fileResult) {
             try {
                 SoccerMatch match = SoccerMatch.builder()
-                        .client(line[0], Integer.parseInt(line[2]))
-                        .opponent(line[1], Integer.parseInt(line[3]))
-                        .date(LocalDate.parse(line[4]))//, DateTimeFormatter.ofPattern("dd/MM/yyyy")))
+                        .client(dto.getClientName(), Integer.parseInt(dto.getClientScore()))
+                        .opponent(dto.getOpponentName(), Integer.parseInt(dto.getOpponentScore()))
+                        .date(LocalDate.parse(dto.getDate()))
                         .build();
                 listResult.add(match);
 
