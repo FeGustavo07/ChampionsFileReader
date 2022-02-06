@@ -7,7 +7,7 @@ import java.util.LinkedHashSet;
 
 @Data
 @EqualsAndHashCode
-public class TeamBoard implements Comparable<TeamBoard> {
+public class TeamBoard implements Comparable<TeamBoard>{
     private String name;
     private int victories;
     private int ties;
@@ -44,8 +44,15 @@ public class TeamBoard implements Comparable<TeamBoard> {
 
 
     @Override
-    public int compareTo(@NotNull TeamBoard o) {
-        return this.pontuation - o.getPontuation();
+    public int compareTo(@NotNull TeamBoard teamBoard) {
+        int pontuationCompare = this.pontuation - teamBoard.getPontuation();
+        if (pontuationCompare != 0) {
+            return pontuationCompare;
+        }
+        int victoriesCompare = this.victories - teamBoard.getVictories();
+        if (victoriesCompare != 0) {
+            return victoriesCompare;
+        }
+        return this.name.compareTo(teamBoard.name);
     }
-
 }
