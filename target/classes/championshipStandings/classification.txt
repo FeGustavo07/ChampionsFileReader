@@ -1,0 +1,13 @@
+Bragantino;13;1;5;40;
+Fluminense;10;4;5;34;
+Corinthians;10;3;6;33;
+Juventude;10;1;8;31;
+Cuiabá;9;3;7;30;
+Fortaleza;9;2;8;29;
+Goiás;8;4;7;28;
+América-MG;7;5;7;26;
+Atlético-MG;7;3;9;24;
+Coritiba;7;2;10;23;
+Botafogo;6;4;9;22;
+Palmeiras;6;3;10;21;
+Atlético-GO;5;3;11;18;

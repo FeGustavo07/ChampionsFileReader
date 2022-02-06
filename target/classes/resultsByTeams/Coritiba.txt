@@ -1,0 +1,19 @@
+Coritiba;Athletico Paranaense;6;2;2022-03-02
+Coritiba;América-MG;1;1;2022-03-03
+Coritiba;São Paulo;1;2;2022-03-05
+Coritiba;Atlético-MG;2;5;2022-03-07
+Coritiba;Santos;2;3;2022-03-07
+Coritiba;Corinthians;2;3;2022-03-08
+Coritiba;Fortaleza;2;6;2022-03-09
+Coritiba;Avaí;1;4;2022-03-11
+Coritiba;Bragantino;6;6;2022-03-13
+Coritiba;Flamengo;3;0;2022-03-17
+Coritiba;Fluminense;1;6;2022-03-18
+Coritiba;Internacional;3;1;2022-03-18
+Coritiba;Goiás;2;3;2022-03-20
+Coritiba;Palmeiras;3;1;2022-03-20
+Coritiba;Ceará;6;2;2022-03-22
+Coritiba;Botafogo;6;4;2022-03-24
+Coritiba;Atlético-GO;1;4;2022-03-25
+Coritiba;Cuiabá;0;1;2022-03-27
+Coritiba;Juventude;4;1;2022-03-29

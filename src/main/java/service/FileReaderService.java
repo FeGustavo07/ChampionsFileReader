@@ -6,6 +6,7 @@ import exception.NotParsableLine;
 import lombok.Getter;
 import lombok.val;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.HashSet;
 
 
@@ -29,6 +30,9 @@ public class FileReaderService {
             } catch (NumberFormatException e) {
                 NotParsableLine error = new NotParsableLine("Line not Parsable");
                 error.getErrorMessage();
+            } catch (DateTimeParseException e) {
+                NotParsableLine date = new NotParsableLine("Date Format");
+                date.getErrorMessage();
             }
 
         }

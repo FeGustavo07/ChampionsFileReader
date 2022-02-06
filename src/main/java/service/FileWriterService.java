@@ -7,14 +7,13 @@ import entity.TeamBoard;
 import java.util.ArrayList;
 
 public class FileWriterService {
-
     private final FileWriter writer = new FileWriter();
 
     public void writeTeamsFile(TeamBoard board, String baseUri) {
         String fileType = ".txt";
         ArrayList<String> toWrite = new ArrayList<>();
         String fileName = String.format("%s%s%s", baseUri, board.getName(), fileType);
-            for (SoccerMatch match : board.getMatches()) {
+        for (SoccerMatch match : board.getMatches()) {
                 String message = String.format("%s;%s;%d;%d;%s",
                         match.getClient().getName(),
                         match.getOpponent().getName(),

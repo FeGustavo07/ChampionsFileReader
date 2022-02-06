@@ -1,0 +1,19 @@
+Atlético-GO;São Paulo;1;6;2022-03-02
+Atlético-GO;Goiás;5;1;2022-03-03
+Atlético-GO;Atlético-MG;4;1;2022-03-05
+Atlético-GO;Palmeiras;3;1;2022-03-09
+Atlético-GO;Coritiba;2;3;2022-03-16
+Atlético-GO;Internacional;3;6;2022-03-16
+Atlético-GO;Ceará;5;6;2022-03-18
+Atlético-GO;América-MG;0;5;2022-03-19
+Atlético-GO;Bragantino;2;1;2022-03-21
+Atlético-GO;Corinthians;5;1;2022-03-21
+Atlético-GO;Fluminense;4;4;2022-03-21
+Atlético-GO;Cuiabá;3;4;2022-03-22
+Atlético-GO;Fortaleza;5;5;2022-03-22
+Atlético-GO;Avaí;1;2;2022-03-23
+Atlético-GO;Santos;0;6;2022-03-23
+Atlético-GO;Botafogo;1;4;2022-03-24
+Atlético-GO;Athletico Paranaense;3;3;2022-03-29
+Atlético-GO;Juventude;0;6;2022-03-30
+Atlético-GO;Flamengo;1;4;2022-03-31

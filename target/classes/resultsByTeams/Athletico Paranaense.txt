@@ -1,0 +1,19 @@
+Athletico Paranaense;Avaí;2;6;2022-03-03
+Athletico Paranaense;América-MG;4;0;2022-03-04
+Athletico Paranaense;Palmeiras;1;1;2022-03-05
+Athletico Paranaense;Cuiabá;2;5;2022-03-08
+Athletico Paranaense;Bragantino;6;2;2022-03-11
+Athletico Paranaense;Coritiba;2;6;2022-03-14
+Athletico Paranaense;Atlético-GO;5;0;2022-03-17
+Athletico Paranaense;Flamengo;5;1;2022-03-18
+Athletico Paranaense;Juventude;6;2;2022-03-19
+Athletico Paranaense;Botafogo;3;4;2022-03-20
+Athletico Paranaense;Internacional;3;6;2022-03-22
+Athletico Paranaense;Atlético-MG;6;6;2022-03-26
+Athletico Paranaense;Goiás;1;5;2022-03-26
+Athletico Paranaense;Corinthians;6;6;2022-03-27
+Athletico Paranaense;São Paulo;1;5;2022-03-27
+Athletico Paranaense;Ceará;0;6;2022-03-28
+Athletico Paranaense;Fluminense;1;2;2022-03-28
+Athletico Paranaense;Santos;6;0;2022-03-29
+Athletico Paranaense;Fortaleza;4;5;2022-03-30
