@@ -1,14 +1,13 @@
 package entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 @Data
 @Builder
 @AllArgsConstructor
 @EqualsAndHashCode
+@Setter
+@Getter
 public class Team {
     private String name;
     private Integer goals;
