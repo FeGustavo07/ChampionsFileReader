@@ -19,6 +19,26 @@ public class ConsoleApplicationController {
             } while (option != 1 && option != 2);
             if (option == 1) {
                 this.run();
+                String op;
+                do {
+                    System.out.println("Deseja salvar os arquivos? S ou N");
+                    System.out.print("#: ");
+                    op = input.next();
+                } while (!op.equalsIgnoreCase("S") && !op.equalsIgnoreCase("N"));
+                String path;
+                if (op.equalsIgnoreCase("S")){
+                    System.out.print("Digite o caminho do diretório que irá receber os arquivos: ");
+                    input.nextLine();
+                    path = input.nextLine();
+
+                    fileManagerController.writeEachTeamsFile(path);
+                    fileManagerController.writeClassificationFile(path);
+
+                    System.out.println();
+                    System.out.println("Arquivos salvos com sucesso!");
+                } else {
+                    System.out.println();
+                }
             } else {
                 fileManagerController.deleteFilesOption();
                 System.out.println();
