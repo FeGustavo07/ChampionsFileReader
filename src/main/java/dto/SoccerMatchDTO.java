@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SoccerMatchDTO {
-    public String clientName;
-    public String opponentName;
-    public String clientScore;
-    public String opponentScore;
-    public String date;
+    private String clientName;
+    private String opponentName;
+    private String clientScore;
+    private String opponentScore;
+    private String date;
 }
