@@ -4,12 +4,13 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
+
 import java.util.LinkedHashSet;
 
 @Data
 @EqualsAndHashCode
 @NoArgsConstructor
-public class TeamBoard implements Comparable<TeamBoard>{
+public class TeamTable implements Comparable<TeamTable> {
     private String name;
     private int victories;
     private int ties;
@@ -17,7 +18,7 @@ public class TeamBoard implements Comparable<TeamBoard>{
     private int pontuation = 0;
     private LinkedHashSet<SoccerMatch> matches = new LinkedHashSet<>();
 
-    public TeamBoard(String name) {
+    public TeamTable(String name) {
         this.name = name;
     }
 
@@ -32,15 +33,15 @@ public class TeamBoard implements Comparable<TeamBoard>{
     }
 
     @Override
-    public int compareTo(@NotNull TeamBoard teamBoard) {
-        int pontuationCompare = this.pontuation - teamBoard.getPontuation();
+    public int compareTo(@NotNull TeamTable teamTable) {
+        int pontuationCompare = this.pontuation - teamTable.getPontuation();
         if (pontuationCompare != 0) {
             return pontuationCompare;
         }
-        int victoriesCompare = this.victories - teamBoard.getVictories();
+        int victoriesCompare = this.victories - teamTable.getVictories();
         if (victoriesCompare != 0) {
             return victoriesCompare;
         }
-        return this.name.compareTo(teamBoard.name);
+        return this.name.compareTo(teamTable.name);
     }
 }

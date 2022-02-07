@@ -1,18 +1,22 @@
 package entity;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NonNull;
 
 import java.time.LocalDate;
 
-@Data
+@Getter
 @Builder
-@AllArgsConstructor
 @NonNull
 @EqualsAndHashCode
 public class SoccerMatch implements Comparable<SoccerMatch> {
 
-    private Team client;
-    private Team opponent;
+    private String clientName;
+    private Integer clientScore;
+    private String opponentName;
+    private Integer opponentScore;
     private LocalDate date;
 
     @Override
@@ -21,22 +25,10 @@ public class SoccerMatch implements Comparable<SoccerMatch> {
         if (dateCompare != 0) {
             return dateCompare;
         }
-        int opponentCompare = opponent.getName().compareTo(soccerMatch.getOpponent().getName());
+        int opponentCompare = this.clientName.compareTo(soccerMatch.getClientName());
         if (opponentCompare != 0) {
             return opponentCompare;
         }
-        return client.getName().compareTo(soccerMatch.getClient().getName());
-    }
-
-    public static class SoccerMatchBuilder {
-        public SoccerMatchBuilder client(String name, int goals) {
-            this.client = Team.builder().name(name).goals(goals).build();
-            return this;
-        }
-
-        public SoccerMatchBuilder opponent(String name, int goals) {
-            this.opponent = Team.builder().name(name).goals(goals).build();
-            return this;
-        }
+        return clientName.compareTo(soccerMatch.getClientName());
     }
 }

@@ -2,11 +2,11 @@ package service;
 
 
 import entity.SoccerMatch;
-import entity.TeamBoard;
+import entity.TeamTable;
 import enums.SoccerPontuationRules;
 import lombok.val;
 import repository.SoccerMatchRepository;
-import repository.TeamBoardRepository;
+import repository.TeamTableRepository;
 
 import java.util.*;
 
@@ -19,7 +19,7 @@ public class DataProcessorService {
     private final FileWriterService fileWriterService = new FileWriterService();
 
     private final SoccerMatchRepository matchRepository = new SoccerMatchRepository();
-    private final TeamBoardRepository teamBoardRepository = new TeamBoardRepository();
+    private final TeamTableRepository teamTableRepository = new TeamTableRepository();
 
 
     public void read(String path) {
@@ -30,73 +30,75 @@ public class DataProcessorService {
     }
 
 
-
     public void WriteEachTeamsFile(String uri) {
-        teamBoardRepository.getAllBoards().forEach(
+        teamTableRepository.getAllTables().forEach(
                 value -> fileWriterService.writeTeamsFile(value, uri)
         );
     }
 
     public void WriteClassificationFile(String uri) {
-        val classification = orderByHighestPontuation(teamBoardRepository.getAllBoards());
+        val classification = orderByHighestPontuation(teamTableRepository.getAllTables());
         classification.forEach(
-                board -> fileWriterService.writeBoard(board, uri));
+                board -> fileWriterService.writeTable(board, uri));
     }
 
     private void fillsTeamTable() {
-        val ordered = orderByDateAndName(matchRepository.getAllRegisters());
+        val ordered = orderByDateAndName(matchRepository.getAllMatches());
         val tableByClient = groupByClient(ordered);
         for (String key : tableByClient.keySet()) {
-            TeamBoard board = new TeamBoard(key);
+            TeamTable board = new TeamTable(key);
             for (SoccerMatch soccerMatch : tableByClient.get(key)) {
                 board.add(soccerMatch);
             }
-            this.teamBoardRepository.add(board);
+            this.teamTableRepository.add(board);
         }
     }
 
     private void setResults() {
-        HashSet<SoccerMatch> allMatches = this.matchRepository.getAllRegisters();
-        TreeSet<TeamBoard> allBoards = teamBoardRepository.getAllBoards();
+        HashSet<SoccerMatch> allMatches = this.matchRepository.getAllMatches();
+        TreeSet<TeamTable> allBoards = teamTableRepository.getAllTables();
+
         allMatches.forEach(
                 match -> {
-                    Integer clientScore = match.getClient().getGoals();
-                    Integer opponentScore = match.getOpponent().getGoals();
-                    TeamBoard clientBoard = new TeamBoard();
-                    TeamBoard opponentBoard = new TeamBoard();
 
-                    for (TeamBoard board : allBoards) {
-                        if (Objects.equals(board.getName(), match.getClient().getName())){
-                            clientBoard = board;
+                    Integer clientScore = match.getClientScore();
+                    Integer opponentScore = match.getOpponentScore();
+
+                    TeamTable clientTable = new TeamTable();
+                    TeamTable opponentTable = new TeamTable();
+
+                    for (TeamTable table : allBoards) {
+                        if (Objects.equals(table.getName(), match.getClientName())) {
+                            clientTable = table;
                         }
-                        if(Objects.equals(board.getName(), match.getOpponent().getName())){
-                            opponentBoard = board;
+                        if (Objects.equals(table.getName(), match.getOpponentName())) {
+                            opponentTable = table;
                         }
                     }
                     int clientResult = clientScore.compareTo(opponentScore);
                     int opponentResult = opponentScore.compareTo(clientScore);
 
                     SoccerPontuationRules.getEnumTypeBy(clientResult)
-                            .setResult(clientBoard);
+                            .setResult(clientTable);
 
                     SoccerPontuationRules.getEnumTypeBy(opponentResult)
-                            .setResult(opponentBoard);
+                            .setResult(opponentTable);
                 }
         );
     }
 
-    private TreeMap<String, List<SoccerMatch>> groupByClient(TreeSet<SoccerMatch> ordered) {
+    private TreeMap<String, List<SoccerMatch>> groupByClient(TreeSet<SoccerMatch> listToOrder) {
         return new TreeMap<>(
-                ordered.stream().collect(groupingBy(match -> match.getClient().getName())));
+                listToOrder.stream().collect(groupingBy(SoccerMatch::getClientName)));
     }
 
 
-    private TreeSet<SoccerMatch> orderByDateAndName(HashSet<? extends SoccerMatch> toOrder) {
+    private TreeSet<SoccerMatch> orderByDateAndName(HashSet<SoccerMatch> toOrder) {
         return new TreeSet<>(toOrder);
     }
 
-    private TreeSet<TeamBoard> orderByHighestPontuation(TreeSet<TeamBoard> toOrder) {
-        TreeSet<TeamBoard> list = new TreeSet<>(Collections.reverseOrder());
+    private TreeSet<TeamTable> orderByHighestPontuation(TreeSet<TeamTable> toOrder) {
+        TreeSet<TeamTable> list = new TreeSet<>(Collections.reverseOrder());
         list.addAll(toOrder);
         return list;
     }

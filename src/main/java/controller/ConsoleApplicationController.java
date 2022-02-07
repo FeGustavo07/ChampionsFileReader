@@ -1,56 +1,89 @@
 package controller;
 
+import java.io.File;
 import java.util.Scanner;
 
+import static utils.ConsoleWriteUtils.*;
+
 public class ConsoleApplicationController {
+
+    private final String URI_PATH_SAVE_TEAMS_FILE = "src/main/resources/resultsByTeams/";
+    private final String URI_PATH_SAVE_CLASSIFICATION_FILE = "src/main/resources/championshipStandings/";
 
     FileManagerController fileManagerController = new FileManagerController();
 
     public void chooseOptions() {
         Scanner input = new Scanner(System.in);
-            System.out.println();
-            System.out.println("Digite 1 para converter um novo arquivo ou digite 2 para excluir arquivos existentes");
-            System.out.println();
-            int option;
+        requestInitialOption();
+        int option;
+        do {
+            requestAValidOption();
+            option = input.nextInt();
+        } while (option != 1 && option != 2);
+        if (option == 1) {
+            this.run();
+            String saveOrNot;
             do {
-                System.out.println("Digite uma opção válida");
-                System.out.print("# ");
-                option = input.nextInt();
-            } while (option != 1 && option != 2);
-            if (option == 1) {
-                this.run();
-                String op;
-                do {
-                    System.out.println("Deseja salvar os arquivos? S ou N");
-                    System.out.print("# ");
-                    op = input.next();
-                } while (!op.equalsIgnoreCase("S") && !op.equalsIgnoreCase("N"));
-                String path;
-                if (op.equalsIgnoreCase("S")){
-                    System.out.print("Digite o caminho do diretório que irá receber os arquivos: ");
-                    input.nextLine();
-                    path = input.nextLine();
+                requestSaveOrNot();
+                saveOrNot = input.next();
+            } while (!saveOrNot.equalsIgnoreCase("S") && !saveOrNot.equalsIgnoreCase("N"));
+            String path;
+            if (saveOrNot.equalsIgnoreCase("S")) {
+                requestPathToSave();
+                input.nextLine();
+                path = input.nextLine();
 
-                    fileManagerController.writeEachTeamsFile(path);
-                    fileManagerController.writeClassificationFile(path);
+                fileManagerController.writeEachTeamsFile(path);
+                fileManagerController.writeClassificationFile(path);
 
-                    System.out.println();
-                    System.out.println("Arquivos salvos com sucesso!");
-                } else {
-                    System.out.println();
-                }
+                succesWriteMessage();
             } else {
-                fileManagerController.deleteFilesOption();
                 System.out.println();
-                System.out.println("Arquivos deletados com sucesso!");
-           }
+            }
+        } else {
+            deleteFilesOption();
+            succesDeletedFilesSucessMessage();
+        }
     }
+
 
     public void run() {
-        fileManagerController.readFile(fileManagerController.getFilePath());
-        fileManagerController.writeEachTeamsFile(fileManagerController.getURI_PATH_SAVE_TEAMS_FILE());
-        fileManagerController.writeClassificationFile(fileManagerController.getURI_PATH_SAVE_CLASSIFICATION_FILE());
+        fileManagerController.readFile(getFilePath());
+        fileManagerController.writeEachTeamsFile(URI_PATH_SAVE_TEAMS_FILE);
+        fileManagerController.writeClassificationFile(URI_PATH_SAVE_CLASSIFICATION_FILE);
     }
 
+    private String getFilePath() {
+        String path;
+        Scanner input = new Scanner(System.in);
+        System.out.println();
+        System.out.print("Digite o caminho do arquivo: ");
+        path = input.nextLine();
+        return path;
+    }
+
+    public void deleteFilesOption() {
+        File[] classification = new File(URI_PATH_SAVE_CLASSIFICATION_FILE).listFiles();
+        File[] teams = new File(URI_PATH_SAVE_TEAMS_FILE).listFiles();
+
+        assert classification != null;
+        for (File file : classification) {
+            boolean delete = file.delete();
+            if (delete) {
+                System.out.println(file.getName() + " File was deleted");
+            }
+        }
+
+        assert teams != null;
+        for (File file : teams) {
+            boolean delete = file.delete();
+            if (delete) {
+                System.out.println(file.getName() + " File was deleted");
+            }
+        }
+
+    }
 
 }
+
+
