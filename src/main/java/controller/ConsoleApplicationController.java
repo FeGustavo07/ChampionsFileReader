@@ -20,6 +20,7 @@ public class ConsoleApplicationController {
             requestAValidOption();
             option = input.nextInt();
         } while (option != 1 && option != 2);
+
         if (option == 1) {
             this.run();
             String saveOrNot;
