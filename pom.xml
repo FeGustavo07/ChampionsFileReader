@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.squad811</groupId>
-    <artifactId>fileMenager</artifactId>
+    <artifactId>championsFileReader</artifactId>
     <version>0.0.1</version>
 
     <properties>
@@ -20,6 +20,26 @@
             <version>1.18.22</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>22.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fileManager</groupId>
+            <artifactId>fileManager</artifactId>
+            <version>1.2.3</version>
+        </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>repsy</id>
+            <name>My Private Maven Repository on Repsy</name>
+            <url>https://repo.repsy.io/mvn/fernando_gustavo_silva/com_filemanager</url>
+        </repository>
+    </repositories>
 
 </project>
