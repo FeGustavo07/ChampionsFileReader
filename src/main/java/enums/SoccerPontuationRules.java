@@ -2,7 +2,6 @@ package enums;
 
 import entity.TeamBoard;
 import lombok.Getter;
-
 import java.util.HashMap;
 import java.util.Map;
 

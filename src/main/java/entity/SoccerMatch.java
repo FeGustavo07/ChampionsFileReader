@@ -39,6 +39,4 @@ public class SoccerMatch implements Comparable<SoccerMatch> {
             return this;
         }
     }
-
-
 }

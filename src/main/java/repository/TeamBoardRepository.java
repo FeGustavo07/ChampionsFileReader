@@ -6,7 +6,6 @@ import lombok.Getter;
 import java.util.HashSet;
 import java.util.TreeSet;
 
-
 public class TeamBoardRepository {
     @Getter
     private final TreeSet<TeamBoard> allBoards = new TreeSet<>();

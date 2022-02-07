@@ -2,12 +2,8 @@ package controller;
 
 import lombok.Getter;
 import service.DataProcessorService;
-
 import java.io.File;
-import java.nio.file.NoSuchFileException;
-import java.util.Arrays;
 import java.util.Scanner;
-
 
 @Getter
 public class FileManagerController {

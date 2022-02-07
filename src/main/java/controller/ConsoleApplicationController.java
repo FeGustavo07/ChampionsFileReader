@@ -14,7 +14,7 @@ public class ConsoleApplicationController {
             int option;
             do {
                 System.out.println("Digite uma opção válida");
-                System.out.print("#: ");
+                System.out.print("# ");
                 option = input.nextInt();
             } while (option != 1 && option != 2);
             if (option == 1) {
@@ -22,7 +22,7 @@ public class ConsoleApplicationController {
                 String op;
                 do {
                     System.out.println("Deseja salvar os arquivos? S ou N");
-                    System.out.print("#: ");
+                    System.out.print("# ");
                     op = input.next();
                 } while (!op.equalsIgnoreCase("S") && !op.equalsIgnoreCase("N"));
                 String path;
