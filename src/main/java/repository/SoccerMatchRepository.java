@@ -7,10 +7,10 @@ import java.util.HashSet;
 
 public class SoccerMatchRepository {
     @Getter
-    private final HashSet<SoccerMatch> allRegisters = new HashSet<>();
+    private final HashSet<SoccerMatch> allMatches = new HashSet<>();
 
     public void addAll(HashSet<SoccerMatch> matches) {
-        allRegisters.addAll(matches);
+        allMatches.addAll(matches);
     }
 
 }

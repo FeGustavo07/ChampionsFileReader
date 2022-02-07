@@ -6,6 +6,7 @@ import entity.SoccerMatch;
 import exception.NotParsableLine;
 import lombok.Getter;
 import lombok.val;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.HashSet;
@@ -18,27 +19,31 @@ public class FileReaderService {
 
     public HashSet<SoccerMatch> read(String uri) {
         SoccerMatchDTO template = new SoccerMatchDTO();
-        val fileResult = fileReader.readFileWithTemplate(template,uri);
+        val fileResult = fileReader.readFileWithTemplate(template, uri);
         HashSet<SoccerMatch> listResult = new HashSet<>();
 
         for (SoccerMatchDTO dto : fileResult) {
             try {
-                SoccerMatch match = SoccerMatch.builder()
-                        .client(dto.getClientName(), Integer.parseInt(dto.getClientScore()))
-                        .opponent(dto.getOpponentName(), Integer.parseInt(dto.getOpponentScore()))
-                        .date(LocalDate.parse(dto.getDate()))
-                        .build();
+                SoccerMatch match = dtoToEntity(dto);
                 listResult.add(match);
-
             } catch (NumberFormatException e) {
                 NotParsableLine error = new NotParsableLine("Line not Parsable");
+                System.err.println(error.getMessage());
                 error.getErrorMessage();
             } catch (DateTimeParseException e) {
-                NotParsableLine date = new NotParsableLine("Date Format");
-                date.getErrorMessage();
+                e.printStackTrace();
             }
-
         }
         return listResult;
+    }
+
+    private SoccerMatch dtoToEntity(SoccerMatchDTO dto) {
+        return SoccerMatch.builder()
+                .clientName(dto.getClientName())
+                .clientScore(Integer.parseInt(dto.getClientScore()))
+                .opponentName(dto.getOpponentName())
+                .opponentScore(Integer.parseInt(dto.getOpponentScore()))
+                .date(LocalDate.parse(dto.getDate()))
+                .build();
     }
 }

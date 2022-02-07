@@ -2,34 +2,38 @@ package service;
 
 import com.fileManager.FileWriter;
 import entity.SoccerMatch;
-import entity.TeamBoard;
+import entity.TeamTable;
 
 import java.util.ArrayList;
 
 public class FileWriterService {
     private final FileWriter writer = new FileWriter();
 
-    public void writeTeamsFile(TeamBoard board, String baseUri) {
+    public void writeTeamsFile(TeamTable table, String baseUri) {
         String fileType = ".txt";
         ArrayList<String> toWrite = new ArrayList<>();
-        String fileName = String.format("%s%s%s", baseUri, board.getName(), fileType);
-        for (SoccerMatch match : board.getMatches()) {
-                String message = String.format("%s;%s;%d;%d;%s",
-                        match.getClient().getName(),
-                        match.getOpponent().getName(),
-                        match.getClient().getGoals(),
-                        match.getOpponent().getGoals(),
-                        match.getDate().toString()
-                );
-                toWrite.add(message);
-            }
+        String fileName = String.format("%s%s%s", baseUri, table.getName(), fileType);
+
+        for (SoccerMatch match : table.getMatches()) {
+            String message = buildLine(match);
+            toWrite.add(message);
+        }
+
         writer.writeSeparateTeams(toWrite, fileName, baseUri);
     }
 
-    public void writeBoard(TeamBoard board, String path) {
+    private String buildLine(SoccerMatch match) {
+        return String.format("%s;%s;%d;%d;%s",
+                match.getClientName(),
+                match.getOpponentName(),
+                match.getClientScore(),
+                match.getOpponentScore(),
+                match.getDate().toString()
+        );
+    }
+
+    public void writeTable(TeamTable board, String path) {
         String uri = path + "classification.txt";
         writer.writeChampionshipStandings(board.getformatedTextResult(), uri, path);
     }
-
 }
-
